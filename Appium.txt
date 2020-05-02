@@ -1,0 +1,22 @@
+MySQLIP=localhost;
+DBName=alquran;
+dbusername=root;
+dbpassword=Ninety02#;
+Url=http://0.0.0.0:4723/wd/hub;
+FBuserName=mninety@gmail.com;
+FBpwd=Ninety02#;
+isGUI=1;
+isWindows=1;
+isSchedule=0;
+ScheduleDate=21;
+Post=;
+Tracking=16:61;
+PostID=35;
+
+dialNumber=93;
+DEVICE_NAME=Galaxy J7 (2016);
+PLATFORM_VERSION=6.0.1;
+appPackage=com.revesoft.itelmobiledialer.dialer;
+appActivity=com.revesoft.itelmobiledialer.dialer.RootActivity;
+
+

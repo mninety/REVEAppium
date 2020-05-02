@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+		/*    	  String cc2 = "0986";
+  	  String cc1 = "09ae";
+  	  String cc3 = "09b0";
+  	  String cc4 = "09be";
+  	  
+  	  String text2 = String.valueOf(Character.toChars(Integer.parseInt(cc2, 16)));
+  	  String text1 = String.valueOf(Character.toChars(Integer.parseInt(cc1, 16)));
+  	  String text3 = String.valueOf(Character.toChars(Integer.parseInt(cc3, 16)));
+  	  String text4 = String.valueOf(Character.toChars(Integer.parseInt(cc4, 16)));
+  	  String text5 = String.valueOf(Character.toChars(Integer.parseInt(cc5, 16)));
+  	  System.out.println(text2+text1+text3+text3+text4);*/
+  	  
+/*  	  String str="اَللهُ";
+  	  //String str1="আমরা";
+  	  char[] chararray = str.toCharArray();
+  	  //char ch='';
+  	  for(int i=0;i<chararray.length;i++)
+  	  {
+  		  System.out.println(String.format("%04x", (int) chararray[i])+"\n");
+  	  }*/
+  	  
+		//select atAyatID,atSuraID,atSuraAyatID from ayat where atAyatMeaning_bl like '%ভয় ক%';                                                   and atSuraID>0 and atSuraID<20
+		Connection con=MethodContainer.MysqlConnection();
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	  	String result=MethodContainer.MysqlConnectionAction("select atAyatID,atSuraID,atSuraAyatID from ayat where atAyatMeaning_bl like '%শরীক%'",con,",");
+	  	System.out.println("Length: "+result.length()+"\nResult: \n"+result);
+	  	String[] history=result.split("\n");
+	  	System.out.println("Length: "+history.length);
+	  	for(int i=0;i<history.length;i++)
+	  	{
+	  		String[] historysplit=history[i].split(",");
+	  		//System.out.println("historysplit Length: "+historysplit.length);
+	  		//System.out.println("Length1: "+historysplit[0]);
+	  		//System.out.println("Length2: "+historysplit[1]);
+	  		MethodContainer.InsertDatatoAyatHistory(38,Integer.parseInt(historysplit[1]),Integer.parseInt(historysplit[0]),MethodContainer.MysqlConnection());
+	  	}
+	  	
+	  	
+/*        	String[] ayataudio = {""};
+      	int k=0;
+      	String line="";
+      	BufferedReader br = null;
+          br = new BufferedReader(new FileReader("G:/My Document/MFolder/Quran Audio/ALAFASY/a.txt"));
+          while ((line = br.readLine()) != null) {
+          	
+          	String[] words = line.split("\\s+");
+          	for(int i=0;i<words.length;i++) {
+          		if(words[i].contains(".mp3"))
+          		{
+          			//ayataudio[k]=words[i];
+          			System.out.println(words[i]);
+          			break;
+          		}
+          		else
+          		{
+          			continue;
+          		}
+          	}
+          	k++;
+          }*/
+         
+
+/*    	String line="";
+  	BufferedReader br = null;
+      br = new BufferedReader(new FileReader("G:/My Document/MFolder/Quran Audio/VersebyVerseAlaFasy/000_versebyverse/ayataudiolist1.txt"));
+      int i=6004;
+      while ((line = br.readLine()) != null) {
+      	MysqlConnectionActionUpdate("update ayat set atAyatAudio_ar='"+line+"' where atAyatID="+i, VariableContainer.conn);
+      	i++;
+      }*/
+  	
+  	//String[] skip1= {"م","ج","لا","س","ص","قلي","صلي","ز","ق","∴","∴∴","ك","وقفتہ","قف","⃝","ع","مـ","صل"};
+      
+/*    	String[] skip= {"ۚ","ۗ","ۖ","ۛ","ۙ","ۘ","۩","ۜ"};
+      conn=MysqlConnection();
+      int m=1;
+      for(int ayat=1;ayat<6237;ayat++)
+      {
+      	
+      	if(conn==null)
+      	{
+      		conn=MysqlConnection();
+      		
+      		//log.debug("Mysql connection reconnect: "+conn);
+      		System.out.println("Mysql connection reconnect: "+conn);
+      	}
+      	else
+      	{
+      		System.out.println("Mysql connection is alive: "+conn);
+      		//log.debug("Mysql connection is alive: "+conn);
+      	}
+      	//0030 - 0039 [0-9]
+      	//09E6 - 09EF [০-৯]
+      	//2534
+  	String result=MysqlConnectionAction("select atAyat_ar from ayat where atAyatID="+ayat,VariableContainer.conn,"$");
+  	//System.out.println("Result: "+result);
+  	String[] words=result.split("\\s+");
+  	System.out.println("Lenght: "+words.length);
+  	int k=0;
+  	for(int i=0;i<words.length;i++)
+  	{
+  		for(int j=0;j<skip.length;j++)
+  		{
+  			if(words[i].equals(skip[j]))
+  			{
+  				//i++;
+  				break;
+  			}
+  			else
+  			{
+  				if(j==(skip.length-1))
+  				{
+  		    		System.out.println(k+" Word "+i+" : "+words[i]);
+  		    		MysqlInsertData(words[i],ayat,VariableContainer.conn);
+  				}
+  			}
+  		}
+  		k++;
+  	}
+  	
+  	if(m==100)
+  	{
+  		m=0;
+  		try {
+				Thread.sleep(10000);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+  	}
+  	m++;
+   }*/
+   
